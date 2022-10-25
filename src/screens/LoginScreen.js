@@ -30,7 +30,7 @@ const LoginScreen = () => {
     <form onSubmit={handleSubmit(submitForm)}>
       {error && <Error>{error}</Error>}
       <div className="form-group">
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email">Email777</label>
         <input
           type="email"
           className="form-input"
