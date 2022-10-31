@@ -12,7 +12,6 @@ const Header = () => {
   // automatically authenticate user if token is found
   useEffect(() => {
     if (userToken) {
-      console.log("yyyyyyy");
       dispatch(getUserDetails());
     }
   }, [userToken, dispatch]);

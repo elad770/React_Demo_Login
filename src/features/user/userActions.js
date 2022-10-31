@@ -15,6 +15,7 @@ export const userLogin = createAsyncThunk(
       const { data } = await axios.post("/login", { email, password }, config);
 
       // store user's token in local storage
+      console.log("data = ", data);
       localStorage.setItem("userToken", data.access_token);
       return data;
     } catch (error) {
