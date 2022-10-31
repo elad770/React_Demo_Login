@@ -62,8 +62,6 @@ export const getUserDetails = createAsyncThunk(
     try {
       // get user data from store
       const { user } = getState();
-      //  console.log("----user getState()--->", getState()?.userInfo);
-
       //console.log("Data is... user email", user.userInfo);
       const { data } = await axios({
         method: "GET",
@@ -88,10 +86,8 @@ export const getUserDetails = createAsyncThunk(
       return data;
     } catch (error) {
       if (error.response && error.response.data.message) {
-        console.log("#Fdsfdfdsfd#$$#@");
         return rejectWithValue(error.response.data.message);
       } else {
-        console.log("PPPP", error.message);
         return rejectWithValue(error.message);
       }
     }

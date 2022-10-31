@@ -15,7 +15,7 @@ function useToken() {
   function removeToken() {
     localStorage.removeItem("token");
     setToken(null);
-    window.location.replace("http://localhost:3000/");
+    window.location.replace("https://react-with-falsk3.onrender.com");
     //window.location.href = "http://localhost:3000/";
     // window.location.replace(...) is better than using window.location.href
 
