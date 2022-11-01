@@ -8,6 +8,7 @@ export const userLogin = createAsyncThunk(
       // configure header's Content-Type as JSON
       const config = {
         headers: {
+          Accept: "application/json",
           "Content-Type": "application/json",
           // "Access-Control-Allow-Origin": "*",
           // "Access-Control-Allow-Methods":
@@ -16,14 +17,31 @@ export const userLogin = createAsyncThunk(
         },
       };
 
-      const { data } = await axios.post("/login", { email, password }, config);
-      alert(config, data);
+      // const { data } = await fetch(
+      //   "https://quickclearapi1.onrender.com/login",
+      //   {
+      //     method: "post",
+      //     config,
+      //     //make sure to serialize your JSON body
+      //     body: JSON.stringify({
+      //       email: email,
+      //       password: password,
+      //     }),
+      //   }
+      // );
+
+      const { data } = await axios.post(
+        "https://quickclearapi1.onrender.com/login",
+        { email, password },
+        config
+      );
+
       // store user's token in local storage
       console.log("data = ", data);
       localStorage.setItem("userToken", data.access_token);
       return data;
     } catch (error) {
-      // return custom error message from API if any
+      //error.response.data.msg msg is name key in json backend
       if (error.response && error.response.data.msg) {
         return rejectWithValue(error.response.data.msg);
       } else {
@@ -72,7 +90,7 @@ export const getUserDetails = createAsyncThunk(
       //console.log("Data is... user email", user.userInfo);
       const { data } = await axios({
         method: "GET",
-        url: "/profile",
+        url: "https://quickclearapi1.onrender.com/profile",
         headers: {
           Authorization: `Bearer ${user.userToken}`,
         },
