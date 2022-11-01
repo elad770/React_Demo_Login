@@ -9,7 +9,7 @@ const userToken = localStorage.getItem("userToken")
 const initialState = {
   loading: false,
   userInfo: null,
-  userToken,
+  userToken: null,
   error: null,
   success: false,
 };
