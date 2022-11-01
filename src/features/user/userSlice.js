@@ -2,14 +2,14 @@ import { createSlice } from "@reduxjs/toolkit";
 import { getUserDetails, registerUser, userLogin } from "./userActions";
 
 // initialize userToken from local storage
-const userToken = localStorage.getItem("userToken")
+const userToken_ = localStorage.getItem("userToken")
   ? localStorage.getItem("userToken")
   : null;
 
 const initialState = {
   loading: false,
   userInfo: null,
-  userToken: null,
+  userToken_,
   error: null,
   success: false,
 };
