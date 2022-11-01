@@ -12,11 +12,7 @@ export const userLogin = createAsyncThunk(
         },
       };
 
-      const { data } = await axios.post(
-        "https://quickclearapi1.onrender.com/login",
-        { email, password },
-        config
-      );
+      const { data } = await axios.post("/login", { email, password }, config);
 
       // store user's token in local storage
       console.log("data = ", data);
