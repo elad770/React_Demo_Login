@@ -10,6 +10,9 @@ export const userLogin = createAsyncThunk(
         headers: {
           "Content-Type": "application/json",
           "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods":
+            "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+          "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token",
         },
       };
 
@@ -18,7 +21,7 @@ export const userLogin = createAsyncThunk(
         { email, password },
         config
       );
-
+      alert(config, data);
       // store user's token in local storage
       console.log("data = ", data);
       localStorage.setItem("userToken", data.access_token);
