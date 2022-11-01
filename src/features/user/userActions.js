@@ -20,8 +20,8 @@ export const userLogin = createAsyncThunk(
       return data;
     } catch (error) {
       // return custom error message from API if any
-      if (error.response && error.response.data.message) {
-        return rejectWithValue(error.response.data.message);
+      if (error.response && error.response.data.msg) {
+        return rejectWithValue(error.response.data.msg);
       } else {
         return rejectWithValue(error.message);
       }
@@ -48,8 +48,10 @@ export const registerUser = createAsyncThunk(
         config
       );
     } catch (error) {
-      if (error.response && error.response.data.message) {
-        return rejectWithValue(error.response.data.message);
+      alert(error.response.data.msg);
+      if (error.response && error.response.data.msg) {
+        alert(error.response.data.msg);
+        return rejectWithValue(error.response.data.msg);
       } else {
         return rejectWithValue(error.message);
       }
