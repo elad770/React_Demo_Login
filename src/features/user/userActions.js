@@ -9,18 +9,14 @@ export const userLogin = createAsyncThunk(
       const config = {
         headers: {
           "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods":
-            "GET, POST, PATCH, PUT, DELETE, OPTIONS",
-          "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token",
+          // "Access-Control-Allow-Origin": "*",
+          // "Access-Control-Allow-Methods":
+          //   "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+          // "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token",
         },
       };
 
-      const { data } = await axios.post(
-        "https://quickclearapi1.onrender.com/login",
-        { email, password },
-        config
-      );
+      const { data } = await axios.post("/login", { email, password }, config);
       alert(config, data);
       // store user's token in local storage
       console.log("data = ", data);
