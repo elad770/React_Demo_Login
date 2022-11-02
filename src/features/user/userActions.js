@@ -1,6 +1,7 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
+const host_api = "https://quickclearapi1.onrender.com";
 export const userLogin = createAsyncThunk(
   "user/login",
   async ({ email, password }, { rejectWithValue }) => {
@@ -31,7 +32,7 @@ export const userLogin = createAsyncThunk(
       // );
 
       const { data } = await axios.post(
-        "https://quickclearapi1.onrender.com/login",
+        `${host_api}/login`,
         { email, password },
         config
       );
@@ -65,7 +66,7 @@ export const registerUser = createAsyncThunk(
       };
 
       await axios.post(
-        "/register",
+        `${host_api}/register`,
         { name, email, password, phone, street, city, country, zip },
         config
       );
