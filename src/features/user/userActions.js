@@ -75,8 +75,10 @@ export const getUserDetails = createAsyncThunk(
       //console.log("Data is... user email", user.userInfo);
       const { data } = await axios({
         method: "GET",
-        url: "https://quickclearapi1.onrender.com/profile",
+        url: `${host_api}/profile`,
         headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
           Authorization: `Bearer ${user.userToken}`,
         },
         //email: user.userInfo.email,
