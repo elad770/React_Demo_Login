@@ -1,7 +1,8 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-
+// import { trackPromise } from 'react-promise-tracker';
 const host_api = "https://quickclearapi1.onrender.com";
+
 export const userLogin = createAsyncThunk(
   "user/login",
   async ({ email, password }, { rejectWithValue }) => {
@@ -11,25 +12,8 @@ export const userLogin = createAsyncThunk(
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          // "Access-Control-Allow-Origin": "*",
-          // "Access-Control-Allow-Methods":
-          //   "GET, POST, PATCH, PUT, DELETE, OPTIONS",
-          // "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token",
         },
       };
-
-      // const { data } = await fetch(
-      //   "https://quickclearapi1.onrender.com/login",
-      //   {
-      //     method: "post",
-      //     config,
-      //     //make sure to serialize your JSON body
-      //     body: JSON.stringify({
-      //       email: email,
-      //       password: password,
-      //     }),
-      //   }
-      // );
 
       const { data } = await axios.post(
         `${host_api}/login`,

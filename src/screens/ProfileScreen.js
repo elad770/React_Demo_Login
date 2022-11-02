@@ -4,6 +4,7 @@ import { useEffect } from "react";
 
 const ProfileScreen = () => {
   const { userInfo } = useSelector((state) => state.user);
+
   useEffect(() => {
     let elementFigure = document.querySelector("figure");
     if (elementFigure) {
@@ -30,7 +31,6 @@ const ProfileScreen = () => {
       let color2 = "#" + Math.floor(Math.random() * 16777215).toString(16);
       let color3 = "#" + Math.floor(Math.random() * 16777215).toString(16);
 
-      console.log(color1);
       elementFigure.style.backgroundImage = `linear-gradient(to right, ${color1}, ${color2},${color3} )`;
       // document.querySelector(
       //   "figure"

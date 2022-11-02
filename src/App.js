@@ -6,22 +6,30 @@ import ProfileScreen from "./screens/ProfileScreen";
 import HomeScreen from "./screens/HomeScreen";
 import ProtectedRoute from "./routing/ProtectedRoute";
 import "./App.css";
+import { useSelector } from "react-redux";
+import Loader from "./components/Loader/Loader";
 
 function App() {
+  const { loading } = useSelector((state) => state.user);
   return (
-    <Router>
-      <Header />
-      <main className="container content">
-        <Routes>
-          <Route path="/" element={<HomeScreen />} />
-          <Route path="/login" element={<LoginScreen />} />
-          <Route path="/register" element={<RegisterScreen />} />
-          <Route element={<ProtectedRoute />}>
-            <Route path="/profile" element={<ProfileScreen />} />
-          </Route>
-        </Routes>
-      </main>
-    </Router>
+    <div>
+      <Router>
+        <Header />
+        <main className="container content">
+          <div className="contLogin">
+            <Routes>
+              <Route path="/" element={<HomeScreen />} />
+              <Route path="/login" element={<LoginScreen />} />
+              <Route path="/register" element={<RegisterScreen />} />
+              <Route element={<ProtectedRoute />}>
+                <Route path="/profile" element={<ProfileScreen />} />
+              </Route>
+            </Routes>
+            {loading && <Loader />}
+          </div>
+        </main>
+      </Router>
+    </div>
   );
 }
 
