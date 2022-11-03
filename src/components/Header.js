@@ -36,8 +36,8 @@ const Header = () => {
       </div>
       <nav className="container navigation">
         <NavLink to="/">Home</NavLink>
-        <NavLink to="/login">Login</NavLink>
-        <NavLink to="/register">Register</NavLink>
+        {!userInfo && <NavLink to="/login">Login</NavLink>}
+        {!userToken && <NavLink to="/register">Register</NavLink>}
         <NavLink to="/profile">Profile</NavLink>
       </nav>
     </header>
