@@ -21,7 +21,7 @@ const Header = () => {
       <div className="header-status">
         <span>
           {userInfo
-            ? `Logged opi in as ${userInfo.email}`
+            ? `Logged opi... in as ${userInfo.email}`
             : "You're not logged in"}
         </span>
         <div className="cta">
