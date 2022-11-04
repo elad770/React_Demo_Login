@@ -20,7 +20,9 @@ const Header = () => {
     <header>
       <div className="header-status">
         <span>
-          {userInfo ? `Logged in as ${userInfo.email}` : "You're not logged in"}
+          {userInfo
+            ? `Logged go in as ${userInfo.email}`
+            : "You're not logged in"}
         </span>
         <div className="cta">
           {userInfo ? (
