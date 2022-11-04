@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 // import { trackPromise } from 'react-promise-tracker';
-const host_api = "https://quickclearapi1.onrender.com";
+const host_api = "https://quickclearapi3.onrender.com";
 
 export const userLogin = createAsyncThunk(
   "user/login",
