@@ -26,7 +26,7 @@ class UserAuthorization:
 
         @authorization_page.route('/')
         def hello_world():
-            return 'Hello Andrey'
+            return 'Hello Andrey Rush'
 
         @authorization_page.route('/login', methods=["POST"])
         @cross_origin()
