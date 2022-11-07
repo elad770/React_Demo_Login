@@ -5,7 +5,7 @@ import { getUserDetails, registerUser, userLogin } from "./userActions";
 const userToken = localStorage.getItem("userToken")
   ? localStorage.getItem("userToken")
   : null;
-
+// alert(userToken);
 const initialState = {
   loading: false,
   userInfo: null,

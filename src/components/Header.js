@@ -9,6 +9,7 @@ const Header = () => {
   const { userInfo, userToken } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
+  //;
   // automatically authenticate user if token is found
   useEffect(() => {
     if (userToken) {

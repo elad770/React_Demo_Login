@@ -47,7 +47,8 @@ const ProfileScreen = () => {
         {userInfo?.name ? userInfo.name.charAt(0).toUpperCase() : ""}
       </figure>
       <span>
-        Welcome <strong>{userInfo?.name}!</strong> {userInfo?.about}
+        Welcome <strong>{userInfo?.name}! phone this is:</strong>{" "}
+        {userInfo?.phone}
       </span>
     </div>
   );

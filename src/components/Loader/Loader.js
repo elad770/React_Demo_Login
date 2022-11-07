@@ -2,7 +2,7 @@ import "./Loader.css";
 
 const Loader = (props) => {
   return (
-    <div class="lds-dual-ring">
+    <div className="lds-dual-ring">
       <div>loading...</div>
     </div>
   );

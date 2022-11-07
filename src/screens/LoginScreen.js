@@ -27,7 +27,7 @@ const LoginScreen = () => {
 
   return (
     <form onSubmit={handleSubmit(submitForm)}>
-      {error && <Error>{error}</Error>}
+      {error && error !== "Username already exists" && <Error>{error}</Error>}
       <div className="form-group">
         <label htmlFor="email">Email</label>
         <input

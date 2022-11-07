@@ -3,6 +3,7 @@ import json
 from flask_jwt_extended import create_access_token, get_jwt, get_jwt_identity, \
     unset_jwt_cookies, jwt_required, JWTManager
 import hashlib
+from werkzeug.datastructures import ImmutableMultiDict
 from bson.json_util import dumps
 from bson.objectid import ObjectId
 from flask_cors import CORS, cross_origin
@@ -15,18 +16,25 @@ class DetailsUser:
         self.db = db
         self.jwt = jwt
         self.details = self.create_det()
+        # cors = CORS(self)
+        # self.config['CORS_HEADERS'] = 'Content-Type'
 
     def create_det(self):
         details_page = Blueprint('details', __name__)
 
         @details_page.route('/profile')
+        # headers=['Content-Type', 'Authorization'])
         @cross_origin()
         @jwt_required()
         def my_profile():
+            print("jwt is = ", get_jwt()['sub'])
+
+            doc = self.db.users.find_one({"email": get_jwt()['sub']})
+
             response_body = {
-                "name": "XP 2005",
-                "about": "Hello! I'm a full stack developer that loves python and javascript",
-                # "email": f'{request.get_json()["email"]}'
+                "name": doc["name"],
+                "phone": doc["phone"],
+                "email": f'{doc["email"]}'
             }
             return response_body
 
@@ -42,6 +50,7 @@ class DetailsUser:
                     access_token = create_access_token(
                         identity=get_jwt_identity())
                     data = response.get_json()
+
                     if type(data) is dict:
                         data["access_token"] = access_token
                         print(data["access_token"])

@@ -71,28 +71,36 @@ export const getUserDetails = createAsyncThunk(
   async (arg, { getState, rejectWithValue }) => {
     try {
       // get user data from store
+
       const { user } = getState();
-      //console.log("Data is... user email", user.userInfo);
-      const { data } = await axios({
-        method: "GET",
-        url: `${host_api}/profile`,
+
+      // alert(user.userToken);
+      let config = {
         headers: {
-          Accept: "application/json",
           "Content-Type": "application/json",
+          //Accept: "application/json",
+          //"Access-Control-Allow-Headers": true,
+          "Access-Control-Allow-Origin": "*",
           Authorization: `Bearer ${user.userToken}`,
         },
-        //email: user.userInfo.email,
-      });
+        // params: {
+        //   email: user.userInfo.email,
+        // },
+      };
+      //console.log("Data is... user email", user.userInfo);
+      // const { data } = await axios({
+      //   method: "GET",
+      //   url: `${host_api}/profile`,
+      //   headers: {
+      //     Accept: "application/json",
+      //     "Content-Type": "application/json",
+      //     Authorization: `Bearer ${user.userToken}`,
+      //   },
+      //   email: user.userInfo.email,
+      // });
 
-      //   const { data } = await axios.get(
-      //     `/profile`,
-      //     // { email: user.email },
-      //     {
-      //         headers: {
-      //         Authorization: `Bearer ${user.userToken}`,
-      //       },
-      //     }
-      //   );
+      const { data } = await axios.get(`${host_api}/profile`, config);
+      //localStorage.setItem("userToken", data.access_token);
       console.log("data after is", data);
 
       return data;

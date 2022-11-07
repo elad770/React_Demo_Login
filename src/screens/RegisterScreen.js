@@ -38,7 +38,7 @@ const RegisterScreen = () => {
 
   return (
     <form onSubmit={handleSubmit(submitForm)}>
-      {error && <Error>{error}</Error>}
+      {error && error === "Username already exists" && <Error>{error}</Error>}
       {customError && <Error>{customError}</Error>}
       <div className="form-group">
         <label htmlFor="name"> Name</label>
