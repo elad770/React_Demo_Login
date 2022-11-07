@@ -87,21 +87,10 @@ export const getUserDetails = createAsyncThunk(
         //   email: user.userInfo.email,
         // },
       };
-      //console.log("Data is... user email", user.userInfo);
-      // const { data } = await axios({
-      //   method: "GET",
-      //   url: `${host_api}/profile`,
-      //   headers: {
-      //     Accept: "application/json",
-      //     "Content-Type": "application/json",
-      //     Authorization: `Bearer ${user.userToken}`,
-      //   },
-      //   email: user.userInfo.email,
-      // });
 
       const { data } = await axios.get(`${host_api}/profile`, config);
       //localStorage.setItem("userToken", data.access_token);
-      console.log("data after is", data);
+      console.log("data after is ..", data);
 
       return data;
     } catch (error) {
