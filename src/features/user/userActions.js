@@ -88,9 +88,9 @@ export const getUserDetails = createAsyncThunk(
         // },
       };
 
-      const { data } = await axios.get(`${host_api}/profile`, config);
+      const { data } = await axios.get(`${host_api}/user`, config);
       //localStorage.setItem("userToken", data.access_token);
-      console.log("data after is ..", data);
+      console.log("data after is", data);
 
       return data;
     } catch (error) {

@@ -22,7 +22,9 @@ function App() {
               <Route path="/login" element={<LoginScreen />} />
               <Route path="/register" element={<RegisterScreen />} />
               <Route element={<ProtectedRoute />}>
-                <Route path="/profile" element={<ProfileScreen />} />
+                {!loading && (
+                  <Route path="/profile" element={<ProfileScreen />} />
+                )}
               </Route>
             </Routes>
             {loading && <Loader />}

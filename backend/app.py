@@ -1,5 +1,4 @@
 # import json
-
 from flask import Flask, request, jsonify
 from routes.authorization import UserAuthorization
 from routes.details import DetailsUser
@@ -12,6 +11,8 @@ app.config.from_pyfile('settings.py')
 mongo = PyMongo(app)
 jwt = JWTManager(app)
 
+
+print(mongo.db)
 userAut = UserAuthorization(mongo.db, jwt)
 app.register_blueprint(DetailsUser(mongo.db, jwt).details)
 app.register_blueprint(userAut.authorization)

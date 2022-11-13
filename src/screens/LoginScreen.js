@@ -2,11 +2,11 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { userLogin } from "../features/user/userActions";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import Error from "../components/Error";
 
 const LoginScreen = () => {
-  const { loading, userInfo, error } = useSelector((state) => state.user);
+  const { loading, error } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   const { register, handleSubmit } = useForm();
@@ -14,15 +14,22 @@ const LoginScreen = () => {
   const navigate = useNavigate();
 
   // redirect authenticated user to profile screen
-  useEffect(() => {
-    if (userInfo) {
-      navigate("/profile");
-    }
-  }, [navigate, userInfo]);
+  // useEffect(() => {
+  //   if (userInfo) {
+  //     //navigate("/profile");
+  //   }
+  // }, [navigate, userInfo]);
 
   const submitForm = (data) => {
     //const uslData = userLogin(data);
-    dispatch(userLogin(data));
+    dispatch(userLogin(data))
+      .unwrap()
+      .then((originalPromiseResult) => {
+        navigate("/profile");
+      });
+    // .catch((rejectedValueOrSerializedError) => {
+    //   // handle error here
+    // });
   };
 
   return (
