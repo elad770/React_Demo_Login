@@ -77,7 +77,7 @@ const RegisterScreen = () => {
         />
       </div>
       <div className="form-group">
-        <label htmlFor="phone">zip</label>
+        <label htmlFor="phone">Zip</label>
         <input
           type="text"
           className="form-input"
